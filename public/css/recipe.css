@@ -1,0 +1,126 @@
+h1 {
+	color: #6E3E28;
+	font-family: "berkshire";
+	margin: 10px 10px 10px;
+	font-size: 3em;
+}
+
+hr {
+	margin: solid green 20px;
+  	border-style: solid;
+  	border-width: 1px;
+  	color: #17191F;
+  	box-shadow: 0px 0px 0px #6E3E28;
+}
+
+article{
+	background: white;
+}
+
+
+.recette {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	border: solid 1px #EFE9EE;
+	border-radius: 0.2em;
+	box-shadow: inset  -3px -3px 5px 2px #EFE9EE, inset 3px 3px 5px 2px #EFE9EE;
+	padding: 10px;
+}
+
+#top {
+	display: flex;
+	justify-content: column;
+	align-items: center;
+	align-content: center;
+}
+
+#general {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border-radius: 1em;
+	margin: 10px 10px 10px 10px;
+	border: solid 1.5px #17191F;
+	box-shadow: 0px 1px 3px #EFE9EE;
+	padding: 20px;
+}
+
+#general p {
+	margin: 10px 10px 10px 10px;
+}
+
+.rating {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: flex-start;
+	box-sizing: border-box;
+}
+
+
+.empty {
+	color: Gold;
+	height: 20px;
+	width: 20px;
+	transition: all 0.3s 50ms;
+}
+
+.empty:hover {
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+}
+
+.filled {
+	color: Gold;
+	height: 20px;
+	width: 20px;
+}
+
+#middle {
+	display: flex;
+	align-items: center;
+	height: 400px;
+	border: solid 2px black;
+}
+
+#ingredient {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	align-self: flex-start;
+	border-radius: 1em;
+	margin: 10px 10px 10px 10px;
+	width: 300px;
+	box-shadow: 0px 1px 3px #EFE9EE;
+	border: solid 1.5px #17191F;
+	background-color: white;
+	padding: 10px;
+}
+
+.etape {
+ 	display: flex;
+	flex-direction: column;
+	border-radius: 1em;
+	margin: 10px 30px 10px 30px;
+	background: #FFF1FF;
+	padding: 10px;
+	  box-shadow: 0px 1px 3px #EFE9EE;
+}
+
+.etape pre {
+	margin: 10px 10px 10px 10px;
+	white-space:pre-line;
+	font-family: Calibri;
+}
+
+#bottom {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}

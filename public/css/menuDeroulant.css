@@ -1,0 +1,47 @@
+#menu-deroulant, #menu-deroulant ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+}
+#menu-deroulant {
+    text-align: center;
+}
+#menu-deroulant li {
+/* on place les liens du menu horizontalement */
+    display: inline-block;
+}
+
+#menu-deroulant a {
+  color : white;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s 80ms;
+  margin-left: 20px;
+  border-bottom: solid 2px #3F5F5C;
+}
+
+#menu-deroulant a:hover{
+  border-bottom: solid 2px white;
+  font-size: 1.3em;
+}
+#menu-deroulant ul {
+    position: absolute;
+    left: -999em;
+    z-index: 1000;
+    background-color : #3F5F5C;
+    padding-left: 0px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 25px;
+    display: flex;
+}
+#menu-deroulant li:hover ul {
+/* Au survol des li du menu on replace les sous menus */
+    left: auto;
+    flex-direction: column;
+    height: auto;
+    border-bottom: solid 2px white;
+    align-items: flex-start;
+    font-size: 15px;
+}

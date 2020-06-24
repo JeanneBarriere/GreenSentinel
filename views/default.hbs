@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/font.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/menuDeroulant.css" />
+    <link rel="stylesheet" href="/css/recipe.css" />
+    <link rel="stylesheet" href="/css/listing.css" />
+    <link rel="stylesheet" href="/css/signUp.css" />
+    <link rel="stylesheet" href="/css/logIn.css" />
+    <link rel="stylesheet" href="/css/newArticle.css" />
+    <script src="/js/ajax.js"></script>
+    <script src="/js/article.js"></script>
+    <script src="/js/divers.js"></script>
+
+    <link rel="shortcut icon" type="image/png" href="/images/Owl_logo_white.png" />
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.13/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/js/all.min.js"></script>
+
+ </head>
+ <body>
+   <header>
+     <img src="/images/Owl_logo_white.png" alt="Owl_logo" title="Owl_logo" class="logo">
+     <h1>
+       GreenSentinel
+     </h1>
+ 		<ul id="menu-deroulant">
+ 			<li><a href="/index">Accueil</a></li>
+      <li><a href="/articlesTest">Articles</a></li>
+ 			<!-- <li><a href="#"> Articles  <i class="fas fa-sort-down"></i></a>
+ 					<ul>
+ 						<li><a href="/listing/tartes">Tartes</a></li>
+ 						<li><a href="/listing/cookies">Cookies</a></li>
+ 						<li><a href="/listing/chocolat">Chocolat</a></li>
+ 						<li><a href="/listing/glaces">Glaces</a></li>
+ 						<li><a href="/listing/macarons">Macarons</a></li>
+ 						<li><a href="/listing/entremets">Entremets</a></li>
+ 						<li><a href="/listing/cupcakes">Cupcakes</a></li>
+ 						<li><a href="/listing/biscuits">Biscuits</a></li>
+ 						<li><a href="/listing/smoothies">Smoothies</a></li>
+ 					</ul>
+ 			</li> -->
+        <!-- {{# if user}}
+        {{ else }}
+        <li onclick="connectforrecipe()"><a href=#>Nouvelle recette</a></li>
+        {{/if}} -->
+   			<!-- <li><a href="#">Forum</a></li> -->
+      <li><a href="/newArticle">Proposer un article</a></li>
+      </ul>
+<!--
+     	<div class="search">
+     		<label for="first">   <i class="fas fa-search"></i>  </label><input name="first" id="first">
+     	</div> -->
+
+      {{# if user}}
+        <ul id="connexion">
+          <li><a href="/profil">{{user.pseudo}}</a></li>
+          <li id="logout"><a href=#>Déconnexion</a></li>
+          <script src="/js/logOut.js"></script>
+        </ul>
+      {{ else }}
+        <ul id="connexion">
+          <li><a href="/logIn">Se connecter</a></li>
+          <li><a href="/signUp">S'inscrire</a></li>
+        </ul>
+      {{/if}}
+
+    </header>
+
+    {{{ body }}}
+
+    <footer>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,47 @@
+
+
+	<article>
+		<h1>{{ title }}</h1>
+      	<hr>
+     	<div class="list">
+
+     		{{#if recipes}}
+     		{{#each recipes}}
+				{{#if this.published}}
+
+	     	<div class="listItem">
+					<a href="/recipe/{{this.title}}">
+	     		<img src="/images/parDefault.png" alt="imagerecette" id="photo"> </img>
+	     		<div>
+	     			<h2> {{this.title}} </h2>
+
+		            <p>
+									<h3>Informations</h3>
+			            Temps de préparation : {{this.time}} <br>
+			            Temps de cuisson : {{this.bakingTime}}<br>
+									Ingrédients : {{this.ingredients}}
+		            </p>
+
+		        </div>
+					</a>
+	     	</div>
+				{{/if}}
+	     	{{/each}}
+
+	     	{{else}}
+	     		<div>
+	     			Il n'y a rien ici pour l'instant. Voulez-vous ajouter une nouvelle recette ?
+	     			{{#if user}} Cliquez <a href="/newRecipe">ici</a>.
+						{{else}}
+							<p style="display : flex;">
+								Connectez-vous et cliquez :<a href=# onclick="connectforrecipe()"> ici</a>.
+							</p>
+      				{{/if}}
+      			</div>
+	     	{{/if}}
+
+	    </div>
+
+	    <p id="page"> Page : {{page}} </p>
+
+    </article>

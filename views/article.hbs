@@ -1,0 +1,41 @@
+
+  <article>
+      {{#each recipe}}
+      {{#if this.published}}
+      <h1> {{this.title}} </h1>
+      <h2> Catégorie : {{this.category}} </h2>
+      <div class="recette">
+        <aside id="ingredient">
+          <h3>Ingrédients :</h3>
+              {{this.ingredients}}
+        </aside>
+        <div id="top"> <!-- le haut de la page-->
+
+          <img src="/images/parDefault.png" alt="imagerecette" id="photo"> </img>
+
+          <aside id="general">
+            <div class="rating">
+            <p> Note :</p>
+              <div class="empty" name="rating" id="s1" onclick="clickstar(1);"><i class="far fa-star"></i></div>
+              <div class="empty" name="rating" id="s2" onclick="clickstar(2);"><i class="far fa-star"></i></div>
+              <div class="empty" name="rating" id="s3" onclick="clickstar(3);"><i class="far fa-star"></i></div>
+              <div class="empty" name="rating" id="s4" onclick="clickstar(4);"><i class="far fa-star"></i></div>
+              <div class="empty" name="rating" id="s5" onclick="clickstar(5);"><i class="far fa-star"></i></div>
+          </div>
+            <p>
+              Temps de préparation : {{this.time}} minutes <br>
+              Temps de cuisson : {{this.bakingTime}}  minutes <br>
+              Outils : {{this.tools}}<br>
+            </p>
+          </aside>
+        </div> <!-- le milieu de la page-->
+        <div class="etape">
+          <h3>Etapes :</h3>
+          <pre>
+            {{this.steps}}
+          </pre>
+        </div>
+    </div>
+    {{/if}}
+{{/each}}
+  </article>

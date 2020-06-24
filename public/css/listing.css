@@ -1,0 +1,43 @@
+h2 {
+	font-size: 2em;
+	font-weight: bold;
+	color: #83A299;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+.list a{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
+
+.list a{
+	text-decoration: none;
+	color: #7a7a7a;
+}
+
+.listItem a{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start; /* alignment along main axis */
+	background: #FFF1FF;
+	max-height: 300px;
+	margin-bottom: 40px;
+	box-shadow: 0px 5px 6px #EFE9EE;
+}
+
+#photo {
+	border: solid 2px #FFF1FF;
+	width: 200px;
+  height: 200px;
+	border-radius: 1em;
+	margin: 10px;
+
+}
+
+#page {
+
+}

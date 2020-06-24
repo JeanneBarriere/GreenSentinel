@@ -1,0 +1,40 @@
+.signUp {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items:center;
+  color: #3F5F5C;
+  background-image: url("../images/fond_arbre_grand.jpg");
+  background-size: cover;
+}
+
+.signUp h1{
+  align-self: center;
+  color: inherit;
+  font-family: "adventpro-medium";
+}
+
+#anniversary{
+  display: flex;
+}
+
+.signUp form{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  justify-content: space-between;
+  height: 100%;
+  background-color: white;
+  padding: 5%;
+}
+
+#confirm {
+  width: 8%;
+}
+
+ .check {
+   display: flex;
+   width: 100%;
+ }
