@@ -1,22 +1,22 @@
 {
-  "name": "git_projetWeb",
+  "name": "git_GreenSentinel",
   "version": "1.0.0",
-  "description": "\"# projetWeb\" \r # projetWeb",
+  "description": "\"# greenSentinel\" \r # greenSentinel",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JeanneBarriere/projetWeb.git"
+    "url": "git+https://github.com/JeanneBarriere/GreenSentinel.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JeanneBarriere/projetWeb/issues"
+    "url": "https://github.com/JeanneBarriere/GreenSentinel/issues"
   },
-  "homepage": "https://github.com/JeanneBarriere/projetWeb#readme",
+  "homepage": "https://github.com/JeanneBarriere/GreenSentinel#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
