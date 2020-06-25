@@ -1,0 +1,26 @@
+{
+  "name": "git_projetWeb",
+  "version": "1.0.0",
+  "description": "\"# projetWeb\" \r # projetWeb",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeanneBarriere/projetWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeanneBarriere/projetWeb/issues"
+  },
+  "homepage": "https://github.com/JeanneBarriere/projetWeb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mongoose": "^5.7.5",
+    "nodemon": "^1.19.3"
+  }
+}
