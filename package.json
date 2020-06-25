@@ -20,8 +20,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.1",
     "mongoose": "^5.7.5",
     "node": "^14.4.0",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }
