@@ -104,10 +104,41 @@ async function removeArticle(id) {
   console.log("L'article a été supprimée :"+result);
 }
 
+//Tags
+const tagsSchema = new mongoose.Schema({
+list: Array,
+});
+
+const Tags = mongoose.model('Tags', tagsSchema);
+
+async function createTags(tagsData) {
+  tagsData.list=tagsData.list.split('#');
+  tagsData.list.shift();
+	const tags = new Tags({
+	list: tagsData.list,
+	})
+	const result = await tags.save();
+	console.log(result);
+};
+
+async function FirtsTags(tagsData) {
+	const tags = new Tags({
+	list: tagsData.list,
+	})
+	const result = await tags.save();
+	console.log(result);
+};
+
+async function getAllTags(){
+	const allTags = await Tags.find();
+  return allTags;
+}
+
  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
  	.then(function() {
 		console.log('now connected to mongodb!');
-		removeArticle('5e1b55a1e16f914c6c5e1814');
+		//removeArticle('5e1b55a1e16f914c6c5e1814');
+  //  FirtsTags({list:['ecologie','palmier']});
 	})
 	.catch(function (err) {
 		console.log ("Erreur lors de la connection à mongodb : ", err);
