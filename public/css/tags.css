@@ -19,7 +19,7 @@ h3 {
 	color: #7a7a7a;
 }
 
-.listItem a{
+.tags a{
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start; /* alignment along main axis */

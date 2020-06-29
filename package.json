@@ -27,5 +27,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.6"
   }
 }

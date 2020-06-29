@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
 	mail : String,
 	day : Number,
 	month : Number,
+  admin : { type: Boolean, default: false }
 });
 const User = mongoose.model('User', userSchema);
 
@@ -98,6 +99,11 @@ async function getOneArticle(type){
 	return article;
 }
 
+async function getTagsArticles(type){
+  const article = await Article.find({  tags :  type  }).lean();
+	return article;
+}
+
 async function removeArticle(id) {
   const result = await Article.deleteOne({_id: id});
   // indicates the number of deleted documents
@@ -106,7 +112,7 @@ async function removeArticle(id) {
 
 //Tags
 const tagsSchema = new mongoose.Schema({
-list: Array,
+list: [{type: String}],
 });
 
 const Tags = mongoose.model('Tags', tagsSchema);
@@ -115,7 +121,7 @@ async function createTags(tagsData) {
   tagsData.list=tagsData.list.split('#');
   tagsData.list.shift();
 	const tags = new Tags({
-	list: tagsData.list,
+	list: tagsData.list
 	})
 	const result = await tags.save();
 	console.log(result);
@@ -129,19 +135,42 @@ async function FirtsTags(tagsData) {
 	console.log(result);
 };
 
-async function getAllTags(){
-	const allTags = await Tags.find();
-  return allTags;
-}
+async function getTags(){
+	const tags = await Tags
+	.find()
+	return tags;
+};
+
+async function getOneTags(){
+	const tags = await Tags
+	.find({_id :'5ef4cb75c740645f1c7b29ca'});
+	return tags;
+};
+
+async function getListTags(){
+	const tags = await Tags
+	.find().lean();
+  console.log(tags);
+	return tags;
+};
+
+async function updateTags(tagsData){
+  tagsData.list=tagsData.list.split('#');
+  tagsData.list.shift();
+	await Tags.updateOne({_id:'5ef4cb75c740645f1c7b29ca'},{$addToSet:{list:tagsData.list}});
+  const result = await getOneTags();
+  console.log(result);
+};
 
  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
  	.then(function() {
 		console.log('now connected to mongodb!');
 		//removeArticle('5e1b55a1e16f914c6c5e1814');
-  //  FirtsTags({list:['ecologie','palmier']});
+    //FirtsTags({list:['ecologie','palmier']});
 	})
 	.catch(function (err) {
 		console.log ("Erreur lors de la connection à mongodb : ", err);
  	})
 
-	module.exports = {createUser, getUsers, removeUser, User, createArticle, getArticles, getAllArticles, getOneArticle};
+	module.exports = {createUser, getUsers, removeUser, User, createArticle,
+                    getArticles, getAllArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags};

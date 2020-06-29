@@ -9,20 +9,30 @@ form.addEventListener("submit", function (e) {
     if(document.getElementById("editeur").value=="" || form.title.value=="" || form.tags.value==""){alert("remplissez le formulaire");return ;}
   }
   var tags = form.elements.tags.value;
+  var list = form.elements.tags.value;
   submit.type = "button";
   var title = form.elements.title.value;
   var author = "user.mail";
-  var body = document.getElementById("editeur").innerHTML;;
+  var body = document.getElementById("editeur").innerHTML;
   ajax.post('/createArticle',
     {tags,title,author,body},
     function(response){
       alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne')
-      document.location.href="/index";
+      //document.location.href="/index";
     },
     function(){
       alert('erreur');
     }
-  )
+  );
+  ajax.post('/updateTags',
+    {list},
+    function(response){
+      document.location.href="/index";
+    },
+    function(){
+      alert('erreur tags');
+    }
+  );
   document.location.href="/Index"
 });
 

@@ -12,14 +12,13 @@ app.use(passport.session());
 app.use('/', require('./server/users'));
 app.use('/', require('./server/article'));
 app.use('/', require('./server/passport'));
+app.use('/', require('./server/tags'));
 
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
-
-
 
 app.engine('hbs', hbs({
   extname: 'hbs',
@@ -96,7 +95,7 @@ app.get('/newArticle', function (req, res) {
 
 app.get('/listing/:type/', async function (req, res) {
 
-  let listingArray = ['tartes', 'cookies', 'chocolat', 'glaces', 'macarons', 'entremets', 'cupcakes', 'biscuits', 'smoothies'];
+  let listingArray = db.getListTags();
 
   let page = 1;
   let type = req.params.type;
@@ -160,15 +159,28 @@ app.get('/listing/:type/:page', async function (req, res) {
   }
 });
 
-app.get('/recipe/:type', async function (req, res) {
-  let type = req.params.type;
-  let recipe = await db.getOneRecipe(type);
+app.get('/tags', async function (req, res) {
+  let listTags = await db.getListTags();
   let data = {
-    title: 'GreenSentinel - Recettes',
+    title: 'Nos articles',
     user:req.user,
-    recipe
+    listTags: listTags
   }
-  res.render('recipe.hbs', data);
+  res.render('tags_list.hbs', data);
+});
+
+app.get('/tags/:type', async function (req, res) {
+  let type = req.params.type;
+  console.log(type);
+  //let listArticles = await db.getOneArticle('COUOCU');
+  let listArticles = await db.getTagsArticles(type);
+  let data = {
+    title: 'Nos articles',
+    user:req.user,
+    listArticles: listArticles
+  }
+  console.log(listArticles);
+  res.render('tags.hbs', data);
 });
 
 app.get('/*', function (req, res) {

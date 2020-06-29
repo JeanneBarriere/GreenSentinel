@@ -1,0 +1,14 @@
+	<article>
+		<h1>{{ title }}</h1>
+      	<hr>
+     		{{#each listTags}}
+					{{#each this.list}}
+					<div class="tags">
+						<a href="/tags/{{this}}">
+							{{this}}
+						</a>
+					</div>
+					{{/each}}
+				</div>
+				{{/each}}
+    </article>
