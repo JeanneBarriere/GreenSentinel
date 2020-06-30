@@ -1,43 +1,46 @@
-h2 {
-	font-size: 2em;
-	font-weight: bold;
-	color: #83A299;
-}
-
-h3 {
-	font-size: 1em;
-}
-
-.list a{
+.Andy { /* Grand carré qui contient les 9 petits carrés */
 	display: flex;
 	flex-direction: column;
-	align-content: center;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
 }
 
-.list a{
-	text-decoration: none;
-	color: #7a7a7a;
-}
-
-.tags a{
+.row {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start; /* alignment along main axis */
-	background: #FFF1FF;
-	max-height: 300px;
-	margin-bottom: 40px;
-	box-shadow: 0px 5px 6px #EFE9EE;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items:flex-start;
 }
 
-#photo {
-	border: solid 2px #FFF1FF;
-	width: 200px;
-  height: 200px;
-	border-radius: 1em;
+.box {
+	border-radius: 0.5em;
+	overflow:hidden;
 	margin: 10px;
-
+	height: 200px;
+  width: 200px;
+	background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+	background-image: url("../images/Htag_clair.png");
+	opacity: 0.7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-image 0.15s, transform 0.3s , opacity 0.15s;
 }
 
-#page {
-
+.Andy a{
+	text-decoration: none;
+	text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white;
+	font-weight: bold;
+	font-size: 2em;
+	color : #3F5F5C;
+}
+.box:hover{
+	transition: background-image 0.15s, transform 0.3s, opacity 0.15s;
+	opacity: 1;
+	transform: scale(1.05);
 }

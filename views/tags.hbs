@@ -1,10 +1,15 @@
 	<article>
-		<h1>{{ title }}</h1>
+		<h1>#{{ type }}</h1>
       	<hr>
-     		{{#each listArticles}}
-							{{this.title}}
-						</a>
-					</div>
+				<div class="listArticles">
+					{{#each listArticles}}
+					<a href='/article/{{this.title}}'>
+						<div class="boxArticle">
+								<h2>{{this.title}}</h2>
+								<em>{{this.author}}</em>
+								<p>{{{this.resume}}}</p>
+						</div>
+					</a>
+					{{/each}}
 				</div>
-				{{/each}}
     </article>

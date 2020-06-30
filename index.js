@@ -2,7 +2,8 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const session = require('express-session');
 const app = express();
-const db = require('./server/db')
+const db = require('./server/db');
+const moment = require('moment');
 const passport = require('passport');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
@@ -14,6 +15,7 @@ app.use('/', require('./server/article'));
 app.use('/', require('./server/passport'));
 app.use('/', require('./server/tags'));
 
+
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
@@ -23,6 +25,11 @@ express()
 app.engine('hbs', hbs({
   extname: 'hbs',
   defaultLayout: 'default',
+  helpers: {formatDate: function (date, format) {
+            var mmnt = moment(date);
+            return mmnt.format(format);
+          }
+  },
   layoutsDir: __dirname + '/views/',
 }));
 app.set('view engine', 'hbs');
@@ -162,7 +169,7 @@ app.get('/listing/:type/:page', async function (req, res) {
 app.get('/tags', async function (req, res) {
   let listTags = await db.getListTags();
   let data = {
-    title: 'Nos articles',
+    title: 'Nos articles par tags',
     user:req.user,
     listTags: listTags
   }
@@ -175,12 +182,25 @@ app.get('/tags/:type', async function (req, res) {
   //let listArticles = await db.getOneArticle('COUOCU');
   let listArticles = await db.getTagsArticles(type);
   let data = {
-    title: 'Nos articles',
+    title: 'Tags : '+type,
+    type: type,
     user:req.user,
     listArticles: listArticles
   }
-  console.log(listArticles);
   res.render('tags.hbs', data);
+});
+
+app.get('/article/:type', async function (req, res) {
+  let type = req.params.type;
+  console.log(type);
+  let article = await db.getOneArticle(type);
+  let data = {
+    title: type,
+    type: type,
+    user:req.user,
+    article: article
+  }
+  res.render('article.hbs', data);
 });
 
 app.get('/*', function (req, res) {

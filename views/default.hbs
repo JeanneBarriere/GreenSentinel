@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="/css/signUp.css" />
     <link rel="stylesheet" href="/css/logIn.css" />
     <link rel="stylesheet" href="/css/newArticle.css" />
+    <link rel="stylesheet" href="/css/article.css" />
+    <link rel="stylesheet" href="/css/listArticles.css" />
     <script src="/js/ajax.js"></script>
     <script src="/js/article.js"></script>
     <script src="/js/divers.js"></script>
+    <script src="/js/HandlebarsHelpers.js"></script>
 
-    <link rel="shortcut icon" type="image/png" href="/images/Owl_logo_white.png" />
+    <link rel="shortcut icon" type="image/png" href="/images/logo_owl/Owl_logo_white.png" />
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.13/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/js/all.min.js"></script>
@@ -25,7 +28,7 @@
  </head>
  <body>
    <header>
-     <img src="/images/Owl_logo_white.png" alt="Owl_logo" title="Owl_logo" class="logo">
+     <img src="/images/logo_owl/Owl_logo_white.png" alt="Owl_logo" title="Owl_logo" class="logo">
      <h1>
        GreenSentinel
      </h1>
@@ -72,10 +75,29 @@
       {{/if}}
 
     </header>
+    <div class="cache">
 
+    </div>
     {{{ body }}}
 
     <footer>
+      <div class="contact">
+        <h1>CONTACT</h1>
+        <p></p>
+      </div>
+      <div class="Networks">
+        <div id="Facebook" class="logobrand"></div>
+        <div id="Twitter" class="logobrand"></div>
+        <div id="Linkedin" class="logobrand"></div>
+        <div id="Instagram" class="logobrand"></div>
+      </div>
+      <div class="more">
+        <h1>EN PLUS</h1>
+        <ul>
+          <li>Conditions générales d'utilisation</li>
+          <li>Politique de Protection des données personnelles</li>
+        </ul>
+      </div>
     </footer>
 
   </body>

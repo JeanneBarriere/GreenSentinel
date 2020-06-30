@@ -6,7 +6,7 @@
     <p>Remplissez les informations ci-dessous pour enregistrer votre article:</p>
 
     <form class="articleForm" >
-      <label for="title">Titre de l'article: </label><input type="text" name="title" id="title">
+      <label for="title">Titre de l'article : </label><input type="text" name="title" id="title">
 
       <div class="article">
         <div id="buttons">
@@ -27,8 +27,10 @@
         </div>
       <div id="editeur" contentEditable="true" onclick="tester()" onkeydown="tester()" name="editeur" ></div>
       <div class="tags">
+        <label for="resume">Tags : </label>
         <input id="tags" name="tags">
       </div>
+      <label for="resume">Résumé : </label><input type="text" name="resume" id="resume">
       <br>
       <input type="submit" value="Envoyer" id="submit" >
     </div>

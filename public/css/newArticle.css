@@ -11,7 +11,7 @@
 }
 
 .newArticle {
-  background-image: url("../images/fond_arbre_grand2.jpg");
+  background-image: url("../images/photo/fond_arbre_grand2.jpg");
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,14 +1,6 @@
-/* html{
-  cursor: url(../images/cdonut.png), auto;
-} */
-
 html, body {
   height: 100%;
   margin: 0; padding: 0;
-}
-
-a {
-  /*cursor: url(../images/pdonut.png), auto;*/
 }
 
 body {
@@ -27,6 +19,20 @@ header {
   align-items: center;
   box-shadow: 0px 1px 3px #3F5F5C;
   z-index: 10;
+  position : fixed;
+  font-size: 15px;
+}
+
+.cache{
+  display: flex;
+  min-width: 100%;
+  min-height: 10%;
+  max-width: 100%;
+  max-height: 10%;
+  background-color: #3F5F5C;
+  align-items: center;
+  box-shadow: 0px 1px 3px #3F5F5C;
+  z-index: 0;
   position : relative;
   font-size: 15px;
 }
@@ -36,6 +42,32 @@ header h1 {
   font-family: "adventpro-medium";
   font-size: 3em;
   text-transform: capitalize;
+  padding-top: 1.5%;
+}
+
+h1{
+  align-self: center;
+  color: #3F5F5C;
+  font-family: "adventpro-medium";
+  margin-top: 0.5%;
+}
+
+h2 {
+  color: #3F5F5C;
+  font-family: "adventpro-medium";
+  font-size: 3em;
+}
+
+h2 {
+  color: #3F5F5C;
+  font-family: "adventpro-medium";
+  font-size: 2em;
+}
+
+h3 {
+  color: #83A299;
+  font-family: "adventpro-medium";
+  font-size: 1.5em;
 }
 
 header img {
@@ -92,17 +124,15 @@ header ul {
 
 article {
   margin: 0% 10% 0% 10%;
+  padding-right: 20%;
+  min-height: 100%;
   align-self: center;
   background-color: white;
   z-index: 4;
   position: relative;
-  box-shadow: 1px 0px 3px #EFE9EE, -1px 0px 3px #EFE9EE;
+  box-shadow: 1px 0px 3px #e8e8e8, -1px 0px 3px #e8e8e8;
   padding: 20px;
   color : #474747;
-}
-
-article h1 {
-  text-transform: capitalize;
 }
 
 .text{
@@ -142,15 +172,68 @@ nav a {
   text-decoration: none;
 }
 footer {
+  display: flex;
+  justify-content: space-around;
   background-color: white;
   height: 20%;
   align-self : flex-end;
   border-bottom: solid 3px #83A299;
   z-index: 7;
   position: relative;
-  box-shadow: 0px -1px 3px #EFE9EE;
+  box-shadow: 0px -1px 3px #e8e8e8;
+  padding: 2%;
 }
 
+.logobrand{
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  background-size: 100%;
+  margin: 10px;
+  transition: background-image 0.20s, min-width 0.20s, min-height 0.20s;
+}
+
+.logobrand:hover{
+  min-width: 45px;
+  min-height: 45px;
+}
+.Networks{
+  display: flex;
+}
+
+#Facebook{
+  background-image: url("../images/logo_brand/f_logo_RGB-Grey_100.png");
+
+}
+
+#Facebook:hover{
+  background-image: url("../images/logo_brand/f_logo_RGB-Blue_100.png");
+}
+
+#Twitter{
+  background-image: url("../images/logo_brand/Twitter_Social_Icon_Circle_Grey.png");
+}
+
+#Twitter:hover{
+  background-image: url("../images/logo_brand/Twitter_Social_Icon_Circle_Color.png");
+}
+
+#Linkedin{
+  background-image: url("../images/logo_brand/Logo-LinkedIn-rond-300x300_grey.png");
+}
+
+#Linkedin:hover{
+  background-image: url("../images/logo_brand/Logo-LinkedIn-rond-300x300.png");
+}
+
+#Instagram{
+  background-image: url("../images/logo_brand/logo-rond-insta_grey.png");
+}
+
+#Instagram:hover{
+  background-image: url("../images/logo_brand/logo-rond-insta.png");
+}
 @media only screen and (max-width: 1110px) {
   .search {
     display: none;

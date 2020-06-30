@@ -12,10 +12,11 @@ form.addEventListener("submit", function (e) {
   var list = form.elements.tags.value;
   submit.type = "button";
   var title = form.elements.title.value;
+  var resume = form.elements.resume.value;
   var author = "user.mail";
   var body = document.getElementById("editeur").innerHTML;
   ajax.post('/createArticle',
-    {tags,title,author,body},
+    {tags,title,author,body,resume},
     function(response){
       alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne')
       //document.location.href="/index";

@@ -1,14 +1,15 @@
-	<article>
-		<h1>{{ title }}</h1>
-      	<hr>
-     		{{#each listTags}}
-					{{#each this.list}}
-					<div class="tags">
-						<a href="/tags/{{this}}">
-							{{this}}
-						</a>
-					</div>
-					{{/each}}
+<article>
+	<h1>{{ title }}</h1>
+	<hr>
+ 	{{#each listTags}}
+		<div class="Andy row">
+			{{#each this.list}}
+			<a href="/tags/{{this}}">
+				<div class="capsule box">
+						{{this}}
 				</div>
-				{{/each}}
-    </article>
+			</a>
+			{{/each}}
+		</div>
+	{{/each}}
+</article>

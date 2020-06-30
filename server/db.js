@@ -55,6 +55,7 @@ const articleSchema = new mongoose.Schema({
 	title: String,
   author: String,
   body: String,
+  resume: String,
 	date:  { type: Date, default: Date.now },
   tags: [{type: String}],
 	published: { type: Boolean, default: true },
@@ -70,6 +71,7 @@ async function createArticle(articleData) {
 	title: articleData.title,
   author: articleData.author,
   body: articleData.body,
+  resume: articleData.resume,
 	tags: articleData.tags,
 	published: articleData.published,
   delete: articleData.delete,
@@ -95,7 +97,7 @@ async function getArticles(pageNumber, pageSize, type){
 async function getOneArticle(type){
 
 	const article = await Article
-	.find({title : type})
+	.find({title : type}).lean();
 	return article;
 }
 

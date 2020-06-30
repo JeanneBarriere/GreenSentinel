@@ -1,0 +1,31 @@
+.listArticles{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.boxArticle{
+  margin: 3%;
+  padding: 1%;
+  box-shadow:0px 2px 2px #C0C0C0, 0.5px 0px 2px #e8e8e8, -0.5px 0px 2px #e8e8e8;
+  border-radius: 2px;
+  transition: box-shadow 0.15s;
+}
+
+.boxArticle h2{
+  margin: 1%;
+  font-size: 1.5em;
+}
+
+.boxArticle em{
+  margin-left: 3%;
+}
+
+.boxArticle:hover{
+  box-shadow: 0px 5px 15px #C0C0C0, 0.5px -0.5px 12px #e8e8e8, -0.5px -0.5px 12px #e8e8e8;
+}
+
+.listArticles a{
+  text-decoration: none;
+  color: black;
+}
