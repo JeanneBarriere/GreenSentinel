@@ -102,7 +102,12 @@ async function getOneArticle(type){
 }
 
 async function getTagsArticles(type){
-  const article = await Article.find({  tags :  type  }).lean();
+  const article = await Article.find({  tags :  type, delete : false  }).lean();
+	return article;
+}
+
+async function getUserArticles(type){
+  const article = await Article.find({  author :  type}).lean();
 	return article;
 }
 
@@ -145,14 +150,13 @@ async function getTags(){
 
 async function getOneTags(){
 	const tags = await Tags
-	.find({_id :'5ef4cb75c740645f1c7b29ca'});
+	.find({_id :'5ef4cb75c740645f1c7b29ca'}).lean();
 	return tags;
 };
 
 async function getListTags(){
 	const tags = await Tags
 	.find().lean();
-  console.log(tags);
 	return tags;
 };
 
@@ -164,9 +168,21 @@ async function updateTags(tagsData){
   console.log(result);
 };
 
+async function deleteTags(){
+  const tags = await Tags
+	.findOne({_id :'5ef4cb75c740645f1c7b29ca'},{"list":1}).lean();
+  tags.list.forEach(async function(tag){
+    var articles = await getTagsArticles(tag);
+    if(articles==''){
+      await Tags.updateOne({_id:'5ef4cb75c740645f1c7b29ca'},{$pull:{list:{$in:[tag]}}});
+    }
+  });
+}
+
  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
  	.then(function() {
 		console.log('now connected to mongodb!');
+    deleteTags();
 		//removeArticle('5e1b55a1e16f914c6c5e1814');
     //FirtsTags({list:['ecologie','palmier']});
 	})
@@ -174,5 +190,5 @@ async function updateTags(tagsData){
 		console.log ("Erreur lors de la connection à mongodb : ", err);
  	})
 
-	module.exports = {createUser, getUsers, removeUser, User, createArticle,
+	module.exports = {createUser, getUsers, removeUser, User, createArticle, getUserArticles,
                     getArticles, getAllArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags};

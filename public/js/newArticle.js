@@ -1,5 +1,6 @@
 var form = document.querySelector("form");
 var submit = document.getElementById("submit");
+console.log(usermail);
 
 // Affiche de toutes les données saisies ou choisies
 form.addEventListener("submit", function (e) {
@@ -8,22 +9,18 @@ form.addEventListener("submit", function (e) {
   for(var i=0; i<form.elements.length;i++){
     if(document.getElementById("editeur").value=="" || form.title.value=="" || form.tags.value==""){alert("remplissez le formulaire");return ;}
   }
+  submit.type = "button";
   var tags = form.elements.tags.value;
   var list = form.elements.tags.value;
-  submit.type = "button";
   var title = form.elements.title.value;
   var resume = form.elements.resume.value;
-  var author = "user.mail";
+  var author = usermail;
   var body = document.getElementById("editeur").innerHTML;
   ajax.post('/createArticle',
     {tags,title,author,body,resume},
     function(response){
-      alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne')
-      //document.location.href="/index";
+      alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne');
     },
-    function(){
-      alert('erreur');
-    }
   );
   ajax.post('/updateTags',
     {list},
@@ -34,7 +31,7 @@ form.addEventListener("submit", function (e) {
       alert('erreur tags');
     }
   );
-  document.location.href="/Index"
+  document.location.href="/index"
 });
 
 var a = document.getElementById("tags");

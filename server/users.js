@@ -16,7 +16,7 @@ async function f(){
 let users = await db.getUsers();
 console.log('Les utilisateurs :'+users);
 };
-f();
+//f();
 
 router.get('/connectUser',async function (req, res, next){
     passport.authenticate('local', function(err, user, info) {
@@ -37,7 +37,7 @@ router.get('/connectUser',async function (req, res, next){
     })(req, res, next);
   });
 
-      router.get('/logout', function(req, res){
-          req.logout();
-          res.sendStatus(200);
-      });
+  router.get('/logout', function(req, res){
+      req.logout();
+      res.sendStatus(200);
+  });

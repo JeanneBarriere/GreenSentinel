@@ -1,3 +1,20 @@
 <article style="height:100%;">
-	<p> Vous êtes connecté, {{user.firstName}} !</p>
+	<h1>Votre profil</h1>
+	<p>Votre nom : {{user.firstName}}</p>
+	<p>Votre prénom : {{user.lastName}}</p>
+	<p>Votre addresse mail : {{user.mail}}</p>
+
+	{{# if user.admin}}
+	<div class="listArticles">
+		{{#each listArticles}}
+		<a href='/article/{{this.title}}'>
+			<div class="boxArticle">
+					<h2>{{this.title}}</h2>
+					<em>{{this.author}}</em>
+					<p>{{{this.resume}}}</p>
+			</div>
+		</a>
+		{{/each}}
+	</div>
+	{{/if}}
 </article>

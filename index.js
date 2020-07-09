@@ -1,5 +1,7 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const session = require('express-session');
 const app = express();
 const db = require('./server/db');
@@ -30,15 +32,19 @@ app.engine('hbs', hbs({
             return mmnt.format(format);
           }
   },
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
   layoutsDir: __dirname + '/views/',
 }));
 app.set('view engine', 'hbs');
 
 
-app.get('/profil', function (req, res) {
+app.get('/profil', async function (req, res) {
+  console.log(req.user.mail);
+  let listArticles = await db.getUserArticles(req.user.mail);
   let data = {
     title: 'GreenSentinel - Profil',
     user:req.user,
+    listArticles : listArticles
   }
   res.render('profil.hbs',data);
 });

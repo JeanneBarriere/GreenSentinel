@@ -14,4 +14,4 @@ async function f(){
 let articles = await db.getAllArticles();
 console.log('Les articles :'+articles);
 };
-f();
+//f();
