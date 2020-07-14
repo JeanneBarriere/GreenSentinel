@@ -10,6 +10,22 @@ router.post('/createArticle', async function (req, res){
   res.send('success');
 });
 
+router.post('/deleteArticle', async function (req, res){
+  await db.deleteArticle(req.body);
+  console.log("L'article suprimé "+req.body.title);
+  res.send('success');
+});
+
+router.post('/hideArticle', async function (req, res){
+  await db.hideArticle(req.body);
+  res.send('success');
+});
+
+router.post('/visibleArticle', async function (req, res){
+  await db.visibleArticle(req.body);
+  res.send('success');
+});
+
 async function f(){
 let articles = await db.getAllArticles();
 console.log('Les articles :'+articles);

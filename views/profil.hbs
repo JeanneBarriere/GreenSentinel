@@ -1,20 +1,50 @@
-<article style="height:100%;">
-	<h1>Votre profil</h1>
-	<p>Votre nom : {{user.firstName}}</p>
-	<p>Votre prénom : {{user.lastName}}</p>
-	<p>Votre addresse mail : {{user.mail}}</p>
+<script src="js/boxArticle.js"></script>
+<article style="min-height: 100%;display:flex;flex-direction:column">
+	<div class="">
+		<h1>Votre profil</h1>
+		<p>Votre nom : {{user.firstName}}</p>
+		<p>Votre prénom : {{user.lastName}}</p>
+		<p>Votre addresse mail : {{user.mail}}</p>
 
-	{{# if user.admin}}
-	<div class="listArticles">
-		{{#each listArticles}}
-		<a href='/article/{{this.title}}'>
+		{{# if user.admin}}
+		<h1>Vos articles</h1>
+		<div class="listArticles">
+			{{#each listArticles}}
 			<div class="boxArticle">
-					<h2>{{this.title}}</h2>
-					<em>{{this.author}}</em>
-					<p>{{{this.resume}}}</p>
+				<h2>{{this.title}}</h2>
+				<em>{{this.author}}</em>
+				<p>Résumé : {{{this.resume}}}</p>
+				<div style="display:flex;">
+					{{#each this.tags}}
+					<p style="display:flex;margin-top:0px;padding-top:0px;">#{{this}}</p>
+					{{/each}}
+				</div>
+				<div style="display:flex;justify-content:flex-end;margin-right: 3%;">
+					<button type="button" name="button" style="padding:1px;background-color:#B0B0B0;" onclick="location.href='/article/{{this.title}}'">
+						<p>Voir l'article</p>
+					</button>
+
+					<button  class="delete" onclick="deleteArticle('{{this.title}}')" >
+						<p>SUPPRIMER</p>
+					</button>
+					{{# if this.published}}
+					<button  class="visible" onclick="hideArticle('{{this.title}}')" alt="l'article ne sera plus visible par les utilisateurs" title="L'article ne sera plus visible par les utilisateurs" >
+						<p>CACHER</p>
+					</button>
+					{{ else }}
+					<button  class="visible" onclick="visibleArticle('{{this.title}}')" >
+						<p>PUBLIER</p>
+					</button>
+					{{/if}}
+				</div>
 			</div>
-		</a>
-		{{/each}}
+			<br>
+			{{/each}}
+		</div>
+		{{/if}}
 	</div>
-	{{/if}}
+
+	<button  class="delete" onclick="removeUser('{{user.mail}}')" style="align-self:flex-end;" >
+		<p>Supprimer votre compte</p>
+	</button>
 </article>

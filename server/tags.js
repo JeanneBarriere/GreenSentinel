@@ -15,6 +15,11 @@ router.post('/updateTags', async function (req, res){
   res.send('success');
 });
 
+router.post('/deleteTags', async function (req, res){
+  await db.deleteTags(req.body);
+  res.send('success');
+});
+
 async function listTags(){
 let tags = await db.getTags();
 console.log('Les tags :'+tags);

@@ -44,8 +44,8 @@ async function getUsers(){
   return allUsers;
 }
 
-async function removeUser(id) {
-  const result = await User.deleteOne({_id: id});
+async function removeUser(mail) {
+  const result = await User.deleteOne(mail);
   // indicates the number of deleted documents
   console.log("L'utilisateur a été supprimé :"+result);
 }
@@ -59,7 +59,6 @@ const articleSchema = new mongoose.Schema({
 	date:  { type: Date, default: Date.now },
   tags: [{type: String}],
 	published: { type: Boolean, default: true },
-  delete: { type: Boolean, default: false }
 });
 
 const Article = mongoose.model('Article', articleSchema);
@@ -73,12 +72,14 @@ async function createArticle(articleData) {
   body: articleData.body,
   resume: articleData.resume,
 	tags: articleData.tags,
-	published: articleData.published,
-  delete: articleData.delete,
 	})
 	const result = await article.save();
 	console.log(result);
 };
+
+async function deleteArticle(title) {
+  const result = await Article.deleteOne(title);
+}
 
 async function getAllArticles(){
 	const allArticles = await Article.find();
@@ -102,7 +103,8 @@ async function getOneArticle(type){
 }
 
 async function getTagsArticles(type){
-  const article = await Article.find({  tags :  type, delete : false  }).lean();
+  const article = await Article.find({  tags :  type, published : true  }).lean();
+  //console.log(article);
 	return article;
 }
 
@@ -111,10 +113,15 @@ async function getUserArticles(type){
 	return article;
 }
 
-async function removeArticle(id) {
-  const result = await Article.deleteOne({_id: id});
-  // indicates the number of deleted documents
-  console.log("L'article a été supprimée :"+result);
+async function hideArticle(title){
+  await Article.updateOne(title,{$set:{published:"false"}});
+}
+
+async function visibleArticle(title){
+  await Article.updateOne(title,{$set:{published:"true"}});
+  const article = await Article.findOne(title).lean();
+  console.log(article.tags);
+  await Tags.updateOne({_id:'5ef4cb75c740645f1c7b29ca'},{$addToSet:{list:article.tags}});
 }
 
 //Tags
@@ -190,5 +197,5 @@ async function deleteTags(){
 		console.log ("Erreur lors de la connection à mongodb : ", err);
  	})
 
-	module.exports = {createUser, getUsers, removeUser, User, createArticle, getUserArticles,
-                    getArticles, getAllArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags};
+	module.exports = {createUser, getUsers, removeUser, User, createArticle, getUserArticles, deleteArticle, hideArticle, visibleArticle,
+                    getArticles, getAllArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags, deleteTags};

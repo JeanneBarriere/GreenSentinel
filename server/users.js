@@ -10,6 +10,11 @@ router.post('/createUser', async function (req, res){
   res.send('success');
 });
 
+router.post('/removeUser', async function (req, res){
+  await db.removeUser(req.body);
+  res.send('success');
+});
+
 /// Sers à voir et suprimer utilisateur
 async function f(){
 //await db.removeUser('5ddd0f393995776be0000ef9');

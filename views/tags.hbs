@@ -3,6 +3,7 @@
       	<hr>
 				<div class="listArticles">
 					{{#each listArticles}}
+					{{#if this.published}}
 					<a href='/article/{{this.title}}'>
 						<div class="boxArticle">
 								<h2>{{this.title}}</h2>
@@ -10,6 +11,7 @@
 								<p>{{{this.resume}}}</p>
 						</div>
 					</a>
+					{{/if}}
 					{{/each}}
 				</div>
     </article>
