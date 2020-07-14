@@ -12,7 +12,7 @@ form.addEventListener("submit", async function (e) {
     document.location.href="/index";
     },
     function(){
-      alert('mauvais identifiants 2');
+      alert('Les identifiants ne correspondent pas à un compte existant');
     }
   )
 })

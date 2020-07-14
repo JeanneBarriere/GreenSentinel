@@ -41,6 +41,12 @@ function visibleArticle(title) {
 };
 
 function removeUser(mail) {
+  await ajax.get('/logout', {},
+  function(response){
+  },
+function(err){
+  console.log(err);
+});
   ajax.post('/removeUser',
     {mail},
     function(response){
