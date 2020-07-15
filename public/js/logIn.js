@@ -7,12 +7,13 @@ form.addEventListener("submit", async function (e) {
     var mail = form.elements.mail.value;
 
     await ajax.get('/connectUser',
-    {password,mail},
-    function(response){
-    document.location.href="/index";
-    },
+      {password,mail},
+      function(response){
+        document.location.href="/profil";
+      },
     function(){
       alert('Les identifiants ne correspondent pas à un compte existant');
+      document.location.href="/logIn";
     }
   )
 })

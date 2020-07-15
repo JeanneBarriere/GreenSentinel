@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   {usernameField:'mail',
-  passwordfield:'password'},
+  passwordfield:'password', session: false},
   function(mail, password, done) {
       db.User.findOne({
         mail: mail
@@ -26,7 +26,7 @@ passport.use(new LocalStrategy(
           return done(null, false);
         }
         return done(null, user);
-      });
+      }).catch(done);
   }
 ));
 

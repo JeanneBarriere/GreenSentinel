@@ -37,9 +37,26 @@ app.engine('hbs', hbs({
 }));
 app.set('view engine', 'hbs');
 
+app.get('/connectUser',async function (req, res, next){
+    passport.authenticate('local', function(err, user, info) {
+      console.log('user :',user);
+      if(err || !user){
+        console.log(err);
+        return next(err);
+      }
+      req.logIn(user, function(err){
+        if(err){
+          console.log(err);
+          res.sendStatus(400)
+        }else{
+
+          res.redirect('/index');
+        }
+      });
+    })(req, res, next);
+  });
 
 app.get('/profil', async function (req, res) {
-  console.log(req.user.mail);
   let listArticles = await db.getUserArticles(req.user.mail);
   let data = {
     title: 'GreenSentinel - Profil',
