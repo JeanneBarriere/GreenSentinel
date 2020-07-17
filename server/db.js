@@ -50,6 +50,19 @@ async function removeUser(mail) {
   console.log("L'utilisateur a été supprimé :"+result);
 }
 
+async function pseudo(pseudo){
+  var result = await User.findOne(pseudo);
+  console.log("test"+result);
+  if(result == null)return false;
+  return true;
+}
+
+async function mail(mail){
+  const result = await User.findOne(mail);
+  if(result == null)return false;
+  return true;
+}
+
 // LES ARTICLES
 const articleSchema = new mongoose.Schema({
 	title: String,
@@ -77,12 +90,18 @@ async function createArticle(articleData) {
 	console.log(result);
 };
 
+async function title(title){
+  const result = await Article.findOne(title);
+  if(result == null)return false;
+  return true;
+}
+
 async function deleteArticle(title) {
   const result = await Article.deleteOne(title);
 }
 
-async function getAllArticles(){
-	const allArticles = await Article.find();
+async function getArticlesRecent(){
+	const allArticles = await Article.find().sort({"date":-1}).lean();
   return allArticles;
 }
 
@@ -186,6 +205,31 @@ async function deleteTags(){
   });
 }
 
+// LES COMMENTAIRES
+const commentSchema = new mongoose.Schema({
+  author: String,
+  body: String,
+	date:  { type: Date, default: Date.now },
+  article: String,
+});
+
+const Comment = mongoose.model('Comment', commentSchema);
+
+async function createComment(commentData) {
+	const comment = new Comment({
+  author: commentData.author,
+  body: commentData.body,
+	article: commentData.article,
+	})
+	const result = await comment.save();
+	console.log(result);
+};
+
+async function getCommentArticle(type){
+  const comments = await Comment.find({  article :  type}).lean().sort({"date":1});
+	return comments;
+}
+
  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
  	.then(function() {
 		console.log('now connected to mongodb!');
@@ -197,5 +241,7 @@ async function deleteTags(){
 		console.log ("Erreur lors de la connection à mongodb : ", err);
  	})
 
-	module.exports = {createUser, getUsers, removeUser, User, createArticle, getUserArticles, deleteArticle, hideArticle, visibleArticle,
-                    getArticles, getAllArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags, deleteTags};
+	module.exports = {createUser, getUsers, removeUser, User, pseudo, mail, createArticle, getUserArticles, deleteArticle, hideArticle,
+                    visibleArticle, title,
+                    getArticlesRecent, getArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags, deleteTags,
+                    createComment, getCommentArticle};

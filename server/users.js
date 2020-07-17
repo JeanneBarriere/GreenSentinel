@@ -15,6 +15,14 @@ router.post('/removeUser', async function (req, res){
   res.send('success');
 });
 
+router.post('/tryPseudo', async function (req, res){
+    res.send(await db.pseudo(req.body))
+});
+
+router.post('/tryMail', async function (req, res){
+    res.send(await db.mail(req.body))
+});
+
 /// Sers à voir et suprimer utilisateur
 async function f(){
 //await db.removeUser('5ddd0f393995776be0000ef9');
@@ -24,7 +32,7 @@ console.log('Les utilisateurs :'+users);
 //f();
 
 
-  router.get('/logout', function(req, res){
-      req.logout();
-      res.sendStatus(200);
-  });
+router.get('/logout', function(req, res){
+    req.logout();
+    res.sendStatus(200);
+});

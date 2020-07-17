@@ -16,6 +16,7 @@ app.use('/', require('./server/users'));
 app.use('/', require('./server/article'));
 app.use('/', require('./server/passport'));
 app.use('/', require('./server/tags'));
+app.use('/', require('./server/comment'));
 
 
 const path = require('path')
@@ -50,14 +51,15 @@ app.get('/connectUser',async function (req, res, next){
           res.sendStatus(400)
         }else{
 
-          res.redirect('/index');
+          res.redirect('/profil');
         }
       });
     })(req, res, next);
   });
 
 app.get('/profil', async function (req, res) {
-  let listArticles = await db.getUserArticles(req.user.mail);
+
+  let listArticles = await db.getUserArticles(req.user.pseudo);
   let data = {
     title: 'GreenSentinel - Profil',
     user:req.user,
@@ -89,14 +91,6 @@ app.get('/index', function (req, res) {
     user:req.user,
   }
   res.render('index.hbs', data);
-});
-
-app.get('/articlesTest', function (req, res) {
-  let data = {
-    title: 'GreenSentinel - ArticleTest',
-    user:req.user,
-  }
-  res.render('article.hbs', data);
 });
 
 app.get('/signUp', function (req, res) {
@@ -213,15 +207,26 @@ app.get('/tags/:type', async function (req, res) {
   res.render('tags.hbs', data);
 });
 
+app.get('/articlesRecent', async function (req, res) {
+  let listArticles = await db.getArticlesRecent();
+  let data = {
+    title: 'Nos derniers articles',
+    user:req.user,
+    listArticles: listArticles
+  }
+  res.render('articlesRecent.hbs', data);
+});
+
 app.get('/article/:type', async function (req, res) {
   let type = req.params.type;
-  console.log(type);
   let article = await db.getOneArticle(type);
+  let comments = await db.getCommentArticle(type);
   let data = {
     title: type,
     type: type,
     user:req.user,
-    article: article
+    article: article,
+    comments: comments
   }
   res.render('article.hbs', data);
 });

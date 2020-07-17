@@ -10,6 +10,10 @@ router.post('/createArticle', async function (req, res){
   res.send('success');
 });
 
+router.post('/tryTitle', async function (req, res){
+    res.send(await db.title(req.body))
+});
+
 router.post('/deleteArticle', async function (req, res){
   await db.deleteArticle(req.body);
   console.log("L'article suprimé "+req.body.title);
@@ -23,6 +27,11 @@ router.post('/hideArticle', async function (req, res){
 
 router.post('/visibleArticle', async function (req, res){
   await db.visibleArticle(req.body);
+  res.send('success');
+});
+
+router.post('/articlesRecent', async function (req, res){
+  await db.getArticlesRecent();
   res.send('success');
 });
 

@@ -2,3 +2,23 @@
 	padding-right: 20%;
 	text-align: justify;
 }
+
+.commentPrint{
+	border: solid 1px black;
+	margin: 5px;
+	padding: 5px;
+	width: 50%;
+	align-self: center;
+}
+
+.commentPrint p{
+	margin-left: 10px;
+}
+
+#editeurComment{
+	width: 50%;
+	min-height: 200px;
+	border: 1px solid black;
+	padding: 5px;
+	overflow: auto;
+}

@@ -1,10 +1,8 @@
 var form = document.querySelector("form");
 var submit = document.getElementById("submit");
-console.log("Nombre de champs de saisie : " + form.elements.length); // Affiche 10
-console.log(form.elements[0].name); // Affiche "pseudo" // Affiche "password"
 
 // Affiche de toutes les données saisies ou choisies
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit",async  function (e) {
   e.preventDefault();
   e.stopPropagation();
   for(var i=0; i<form.elements.length;i++){
@@ -13,22 +11,51 @@ form.addEventListener("submit", function (e) {
     if(form.elements[i].value==""){alert("remplissez le formulaire");return ;}
   }
   submit.type = "button";
-    console.log(form.elements);
-    var firstName = form.elements.firstName.value;
-    var lastName = form.elements.lastName.value;
-    var pseudo = form.elements.pseudo.value;
-    var password = form.elements.password1.value;
-    var mail = form.elements.mail.value;
-    var day = form.elements.day.value;
-    var month = form.elements.month.value;
-    ajax.post('/createUser',
-    {firstName,lastName,pseudo,password,mail,day,month},
-    function(response){
-      document.location.href="/confirmedRegistration";
-    },
-    function(){
-      alert('erreur');
-    }
-  )
+  console.log(form.elements);
+  var firstName = form.elements.firstName.value;
+  var lastName = form.elements.lastName.value;
+  var pseudo = form.elements.pseudo.value;
+  var password = form.elements.password1.value;
+  var mail = form.elements.mail.value;
+  var day = form.elements.day.value;
+  var month = form.elements.month.value;
+  console.log(pseudo);
+  await ajax.post('/tryPseudo',
+    {pseudo},
+    async function(response){
+      if(response=='true'){
+        alert('Ce pseudo est déjà utilisé');
+        submit.type = "submit";
+        return;
+      }else{
+        await ajax.post('/tryMail',
+          {mail},
+          async function(response){
+            if(response=='true'){
+              alert('Un compte est déjà lié à cette adresse email');
+              submit.type = "submit";
+              return;
+            }else{
+              await ajax.post('/createUser',
+                {firstName,lastName,pseudo,password,mail,day,month},
+                function(response){
+                  document.location.href="/confirmedRegistration";
+                },
+                function(){
+                  alert('erreur');
+                  document.location.href="/index"
+                }
+              );
+            }
+          });
+        }
+    });
+  })
+
+  // await ajax.get('/connectUser',
+  //   {password,mail},
+  //   function(response){
+  //     document.location.href="/profil";
+  //   });
     // document.location.href="/confirmedRegistration"
-});
+// });

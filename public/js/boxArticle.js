@@ -40,17 +40,20 @@ function visibleArticle(title) {
   document.location.href="/profil"
 };
 
-function removeUser(mail) {
-  await ajax.get('/logout', {},
-  function(response){
-  },
-function(err){
-  console.log(err);
-});
-  ajax.post('/removeUser',
-    {mail},
-    function(response){
-    },
-  );
+async function removeUser(mail) {
+  if(confirm("Attention, la suppresion de votre est définitive, toutes vos données seront supprimées.")){
+    await ajax.get('/logout', {},
+      function(response){
+      },
+      function(err){
+      console.log(err);
+      });
+    ajax.post('/removeUser',
+      {mail},
+      function(response){
+        alert('Votre compte a bien été suprimé.')
+      },
+    );
   document.location.href="/index"
+  }
 };

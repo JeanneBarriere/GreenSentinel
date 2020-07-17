@@ -5,9 +5,42 @@
         <div class="articleprint">
           <h1> {{this.title}} </h1>
           <p>{{{this.body}}}</p>
-          <p>Ecrit par : {{this.author}}</p>
-          <p>Date de publication : {{formatDate this.date "MM-DD-YYYY"}}</p>
+          <h3>Ecrit par : {{this.author}}</h3>
+          <h3>Date de publication : {{formatDate this.date "MM-DD-YYYY"}}</h3>
         </div>
+        <script type="text/javascript">
+        const title = "{{this.title}}";
+        </script>
         {{/if}}
       {{/each}}
+      <hr>
+      <h1>Commentaires</h1>
+      {{#each comments}}
+        <div class="commentPrint">
+          <h1> {{this.author}} </h1>
+          <p>Date de publication : {{formatDate this.date "MM-DD-YYYY"}}</p>
+          <p>{{{this.body}}}</p>
+        </div>
+      {{/each}}
+      {{#if user}}
+      <hr>
+      <h1>Poster un commentaire</h1>
+      <form class="articleForm" >
+        <div class="comment">
+          <div id="buttons">
+            <input type="button" id="button_bold" value="G" class="button" style="font-weight: bold;" onclick="commande('bold');" OnMouseOver="btn_on(this);" OnMouseOut="btn_off(this), tester()" />
+            <input type="button" id="button_italic" value="I" class="button" style="font-style: italic;" onclick="commande('italic');"  OnMouseOver="btn_on(this);" OnMouseOut="btn_off(this) , tester()"/>
+            <input type="button" id="button_underline" value="S" class="button" style="text-decoration: underline;" onclick="commande('underline');"  OnMouseOver="btn_on(this);" OnMouseOut="btn_off(this)"/>
+            <input type="button" value="Lien" class="button" onclick="commande('createLink');"  OnMouseOver="btn_on(this);" OnMouseOut="btn_off(this)"/>
+          </div>
+          <br>
+        <div id="editeurComment" contentEditable="true" onclick="tester()" onkeydown="tester()" name="editeur" ></div>
+        <br>
+        <input type="submit" value="Commenter" id="submit" >
+      </form>
+      <script type="text/javascript">
+      const authorPseudo = "{{user.pseudo}}";
+      </script>
+      {{/if}}
   </article>
+  <script src="/js/comment.js"></script>
