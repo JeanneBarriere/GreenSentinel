@@ -1,9 +1,3 @@
-function connectforrecipe(){
-  if(window.confirm("Vous n'êtes pas connecté !\n\nVoulez-vous vous connecter pour écrire une nouvelle recette ?")) {
-  			document.location.href="/logIn";
-      };
-};
-
 function commande(nom, argument) {
   if (typeof argument === 'undefined') {
     argument = '';
@@ -35,7 +29,16 @@ btn_on(document.getElementById("button_bold"));
 }else{
   btn_off(document.getElementById("button_bold"));
 }
-// Rajouter de même toutes les commandes à tester
+if(document.queryCommandState("italic")){
+btn_on(document.getElementById("button_italic"));
+}else{
+  btn_off(document.getElementById("button_italic"));
+}
+if(document.queryCommandState("underline")){
+btn_on(document.getElementById("button_underline"));
+}else{
+  btn_off(document.getElementById("button_underline"));
+}// Rajouter de même toutes les commandes à tester
 }
 
 function visible(){
