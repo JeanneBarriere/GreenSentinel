@@ -1,7 +1,6 @@
 
   <article>
       {{#each article}}
-        {{#if this.published}}
         <div class="articleprint">
           <h1> {{this.title}} </h1>
           <p>{{{this.body}}}</p>
@@ -11,7 +10,6 @@
         <script type="text/javascript">
         const title = "{{this.title}}";
         </script>
-        {{/if}}
       {{/each}}
       <hr>
       <h1>Commentaires</h1>

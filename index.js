@@ -221,7 +221,7 @@ app.get('/article/:type', async function (req, res) {
   let article = await db.getOneArticle(type);
   let comments = await db.getCommentArticle(type);
   let data = {
-    title: type,
+    title: article.title,
     type: type,
     user:req.user,
     article: article,

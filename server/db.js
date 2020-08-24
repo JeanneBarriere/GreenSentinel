@@ -115,9 +115,8 @@ async function getArticles(pageNumber, pageSize, type){
 }
 
 async function getOneArticle(type){
-
 	const article = await Article
-	.find({title : type}).lean();
+	.find({_id : type}).lean();
 	return article;
 }
 
