@@ -1,7 +1,7 @@
-function deleteArticle(title) {
+function deleteArticle(_title) {
   if(confirm("Attention, la suppresion d'un article est définitive")){
     ajax.post('/deleteArticle',
-      {title},
+      {_title},
       function(response){
         alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne');
       },
@@ -16,9 +16,9 @@ function deleteArticle(title) {
   }else{}
 };
 
-function hideArticle(title) {
+function hideArticle(_id) {
   ajax.post('/hideArticle',
-    {title},
+    {_id},
     function(response){
     },
   );
@@ -31,9 +31,9 @@ function hideArticle(title) {
   document.location.href="/profil"
 };
 
-function visibleArticle(title) {
+function visibleArticle(_id) {
   ajax.post('/visibleArticle',
-    {title},
+    {_id},
     function(response){
     },
   );

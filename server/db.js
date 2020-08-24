@@ -96,8 +96,8 @@ async function title(title){
   return true;
 }
 
-async function deleteArticle(title) {
-  const result = await Article.deleteOne(title);
+async function deleteArticle(id) {
+  const result = await Article.deleteOne(id);
 }
 
 async function getArticlesRecent(){
@@ -132,13 +132,14 @@ async function getUserArticles(type){
 	return article;
 }
 
-async function hideArticle(title){
-  await Article.updateOne(title,{$set:{published:"false"}});
+async function hideArticle(id){
+  console.log(id);
+  await Article.updateOne(id,{$set:{published:"false"}});
 }
 
-async function visibleArticle(title){
-  await Article.updateOne(title,{$set:{published:"true"}});
-  const article = await Article.findOne(title).lean();
+async function visibleArticle(id){
+  await Article.updateOne(id,{$set:{published:"true"}});
+  const article = await Article.findOne(id).lean();
   console.log(article.tags);
   await Tags.updateOne({_id:'5ef4cb75c740645f1c7b29ca'},{$addToSet:{list:article.tags}});
 }
@@ -188,7 +189,9 @@ async function getListTags(){
 
 async function updateTags(tagsData){
   tagsData.list=tagsData.list.split('#');
+  console.log(tagsData.list);
   tagsData.list.shift();
+  console.log(tagsData.list);
 	await Tags.updateOne({_id:'5ef4cb75c740645f1c7b29ca'},{$addToSet:{list:tagsData.list}});
   const result = await getOneTags();
   console.log(result);

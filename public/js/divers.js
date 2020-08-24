@@ -24,21 +24,21 @@ function btn_off(obj){
 }
 
 function tester(){
-if(document.queryCommandState("bold")){
-btn_on(document.getElementById("button_bold"));
-}else{
-  btn_off(document.getElementById("button_bold"));
-}
-if(document.queryCommandState("italic")){
-btn_on(document.getElementById("button_italic"));
-}else{
-  btn_off(document.getElementById("button_italic"));
-}
-if(document.queryCommandState("underline")){
-btn_on(document.getElementById("button_underline"));
-}else{
-  btn_off(document.getElementById("button_underline"));
-}// Rajouter de même toutes les commandes à tester
+  if(document.queryCommandState("bold")){
+  btn_on(document.getElementById("button_bold"));
+  }else{
+    btn_off(document.getElementById("button_bold"));
+  }
+  if(document.queryCommandState("italic")){
+  btn_on(document.getElementById("button_italic"));
+  }else{
+    btn_off(document.getElementById("button_italic"));
+  }
+  if(document.queryCommandState("underline")){
+  btn_on(document.getElementById("button_underline"));
+  }else{
+    btn_off(document.getElementById("button_underline"));
+  }
 }
 
 function visible(){

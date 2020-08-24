@@ -196,7 +196,6 @@ app.get('/tags', async function (req, res) {
 app.get('/tags/:type', async function (req, res) {
   let type = req.params.type;
   console.log(type);
-  //let listArticles = await db.getOneArticle('COUOCU');
   let listArticles = await db.getTagsArticles(type);
   let data = {
     title: 'Tags : '+type,

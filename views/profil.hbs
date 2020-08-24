@@ -24,15 +24,15 @@
 						<p>Voir l'article</p>
 					</button>
 
-					<button  class="delete" onclick="deleteArticle('{{this.title}}')" >
+					<button  class="delete" onclick="deleteArticle('{{this._id}}')" >
 						<p>SUPPRIMER</p>
 					</button>
 					{{# if this.published}}
-					<button  class="visible" onclick="hideArticle('{{this.title}}')" alt="l'article ne sera plus visible par les utilisateurs" title="L'article ne sera plus visible par les utilisateurs" >
+					<button  class="visible" onclick="hideArticle('{{this._id}}')" alt="l'article ne sera plus visible par les utilisateurs" title="L'article ne sera plus visible par les utilisateurs" >
 						<p>CACHER</p>
 					</button>
 					{{ else }}
-					<button  class="visible" onclick="visibleArticle('{{this.title}}')" >
+					<button  class="visible" onclick="visibleArticle('{{this._id}}')" >
 						<p>PUBLIER</p>
 					</button>
 					{{/if}}
