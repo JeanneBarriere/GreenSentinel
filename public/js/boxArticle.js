@@ -1,9 +1,8 @@
-function deleteArticle(_title) {
+function deleteArticle(_id) {
   if(confirm("Attention, la suppresion d'un article est définitive")){
     ajax.post('/deleteArticle',
-      {_title},
+      {_id},
       function(response){
-        alert ('Merci pour cet article, il sera vérifié puis prochainement mise en ligne');
       },
     );
     ajax.post('/deleteTags',
