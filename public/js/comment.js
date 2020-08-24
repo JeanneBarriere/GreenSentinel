@@ -11,13 +11,29 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
     submit.type = "button";
     var author = authorPseudo;
-    var article = title;
+    var article = id;
     var body = document.getElementById("editeurComment").innerHTML;
     await ajax.post('/createComment',
       {author, body, article},
       function(response){
         alert ('Merci pour ce commentaire ,'+author);
-        document.location.href='/article/'+title;
+        document.location.href='/article/'+id;
       });
     });
 });
+
+function deleteComment(_id) {
+  if(confirm("Attention, la suppression d'un commentaire est définitive, voulez-vous continuer ?")){
+    ajax.post('/deleteComment',
+      {_id},
+      function(response){
+      },
+    );
+    ajax.post('/deleteTags',
+      {},
+      function(response){
+      },
+    );
+    document.location.reload();
+  }
+};

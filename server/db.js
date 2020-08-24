@@ -232,6 +232,10 @@ async function getCommentArticle(type){
 	return comments;
 }
 
+async function deleteComment(id) {
+  const result = await Comment.deleteOne(id);
+}
+
  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
  	.then(function() {
 		console.log('now connected to mongodb!');
@@ -246,4 +250,4 @@ async function getCommentArticle(type){
 	module.exports = {createUser, getUsers, removeUser, User, pseudo, mail, createArticle, getUserArticles, deleteArticle, hideArticle,
                     visibleArticle, title,
                     getArticlesRecent, getArticles, getOneArticle,  getTagsArticles, getTags, updateTags, getListTags, getOneTags, deleteTags,
-                    createComment, getCommentArticle};
+                    createComment, getCommentArticle, deleteComment};

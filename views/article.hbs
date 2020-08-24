@@ -9,6 +9,7 @@
         </div>
         <script type="text/javascript">
         const title = "{{this.title}}";
+        const id = "{{this._id}}";
         </script>
       {{/each}}
       <hr>
@@ -18,8 +19,22 @@
           <h1> {{this.author}} </h1>
           <p>Date de publication : {{formatDate this.date "MM-DD-YYYY"}}</p>
           <p>{{{this.body}}}</p>
+          {{# if ../user}}
+            {{# if ../user.admin}}
+            <button  class="delete" onclick="deleteComment('{{this._id}}')" >
+              <p>SUPPRIMER</p>
+            </button>
+            {{else}}
+              {{#ifEquals ../user.pseudo this.author}}
+              <button  class="delete" onclick="deleteComment('{{this._id}}')" >
+                <p>SUPPRIMER</p>
+              </button>
+              {{/ifEquals}}
+            {{/if}}
+          {{/if}}
         </div>
       {{/each}}
+
       {{#if user}}
       <hr>
       <h1>Poster un commentaire</h1>

@@ -16,7 +16,6 @@ router.post('/tryTitle', async function (req, res){
 
 router.post('/deleteArticle', async function (req, res){
   await db.deleteArticle(req.body);
-  console.log("L'article suprimé "+req.body.title);
   res.send('success');
 });
 

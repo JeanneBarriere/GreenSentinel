@@ -31,6 +31,9 @@ app.engine('hbs', hbs({
   helpers: {formatDate: function (date, format) {
             var mmnt = moment(date);
             return mmnt.format(format);
+          },
+          ifEquals: function(arg1, arg2, options) {
+            return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
           }
   },
   handlebars: allowInsecurePrototypeAccess(Handlebars),

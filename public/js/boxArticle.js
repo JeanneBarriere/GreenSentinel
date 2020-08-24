@@ -8,11 +8,10 @@ function deleteArticle(_id) {
     ajax.post('/deleteTags',
       {},
       function(response){
-        //document.location.href="/index";
       },
     );
     document.location.href="/profil"
-  }else{}
+  }
 };
 
 function hideArticle(_id) {

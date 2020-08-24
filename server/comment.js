@@ -14,3 +14,8 @@ router.post('/getCommentArticle', async function (req, res){
   await db.getCommentArticle(req.body);
   res.send('success');
 });
+
+router.post('/deleteComment', async function (req, res){
+  await db.deleteComment(req.body);
+  res.send('success');
+});
