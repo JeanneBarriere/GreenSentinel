@@ -1,5 +1,5 @@
 function deleteArticle(_id) {
-  if(confirm("Attention, la suppresion d'un article est définitive")){
+  if(confirm("Attention, la suppression d'un article est définitive, voulez-vous continuer ?")){
     ajax.post('/deleteArticle',
       {_id},
       function(response){
@@ -40,7 +40,7 @@ function visibleArticle(_id) {
 };
 
 async function removeUser(mail) {
-  if(confirm("Attention, la suppresion de votre est définitive, toutes vos données seront supprimées.")){
+  if(confirm("Attention, la suppression de votre compte est définitive, toutes vos données seront supprimées.")){
     await ajax.get('/logout', {},
       function(response){
       },
